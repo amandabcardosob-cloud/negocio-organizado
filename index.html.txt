@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Negócio Organizado – O Guia Prático para Fazer sua Empresa Prosperar</title> <link rel="preconnect" href="https://fonts.googleapis.com"> <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"> <script src="https://cdn.tailwindcss.com"></script> <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script> <style> :root { --verde: #1a4d3a; --verde2: #2d6a4f; --verde3: #40916c; --ouro: #b8973a; --ouro2: #d4af57; --ouro3: #f0d080; --cinza: #f5f5f2; --cinza2: #e8e8e4; --cinza3: #9ca3af; --escuro: #111814; } * { box-sizing: border-box; margin: 0; padding: 0; } html { scroll-behavior: smooth; } body { font-family: 'Inter', sans-serif; background: #fff; color: var(--escuro); overflow-x: hidden; }
+/* Typography */
+.display { font-family: 'Playfair Display', serif; }
+/* Hero gradient */
+.hero-bg {
+background: linear-gradient(145deg, #0d2b1f 0%, #1a4d3a 50%, #0f3528 100%);
+}
+/* Gold gradient text */
+.gold-text {
+background: linear-gradient(135deg, var(--ouro) 0%, var(--ouro3) 50%, var(--ouro2) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+/* Subtle gold line */
+.gold-line {
+height: 2px;
+background: linear-gradient(90deg, transparent, var(--ouro2), transparent);
+}
+/* CTA Button */
+.btn-cta {
+background: linear-gradient(135deg, var(--ouro) 0%, var(--ouro3) 50%, var(--ouro) 100%);
+background-size: 200% 200%;
+color: var(--escuro);
+font-weight: 700;
+letter-spacing: 0.03em;
+border-radius: 50px;
+transition: all 0.4s ease;
+position: relative;
+overflow: hidden;
+text-transform: uppercase;
+font-size: 0.9rem;
+box-shadow: 0 8px 32px rgba(184,151,58,0.35);
+}
+.btn-cta {
+background-position: right center;
+transform: translateY(-2px);
+box-shadow: 0 16px 48px rgba(184,151,58,0.5);
+}
+.btn-cta::before {
+content: '';
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+border-radius: inherit;
+}
+/* Book 3D */
+.book-wrap {
+perspective: 1000px;
+}
+.book {
+width: 220px;
+height: 295px;
+position: relative;
+transform-style: preserve-3d;
+transform: rotateY(-18deg) rotateX(4deg);
+filter: drop-shadow(-24px 32px 48px rgba(0,0,0,0.55));
+transition: transform 0.6s ease;
+}
+.book {
+transform: rotateY(-8deg) rotateX(2deg) translateY(-8px);
+}
+.book-cover {
+width: 100%;
+height: 100%;
+background: linear-gradient(160deg, #1a4d3a 0%, #0d2b1f 100%);
+border-radius: 4px 12px 12px 4px;
+position: relative;
+overflow: hidden;
+border: 1px solid rgba(184,151,58,0.3);
+}
+.book-cover::before {
+content: '';
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, rgba(184,151,58,0.08) 0%, transparent 50%);
+}
+.book-spine {
+position: absolute;
+left: -22px;
+top: 0;
+width: 22px;
+height: 100%;
+background: linear-gradient(180deg, #0d2b1f 0%, #163d2a 100%);
+border-radius: 4px 0 0 4px;
+transform: rotateY(-90deg) translateZ(-11px);
+transform-origin: right;
+border: 1px solid rgba(184,151,58,0.2);
+}
+.book-top {
+position: absolute;
+top: -12px;
+left: -22px;
+width: calc(100% + 22px);
+height: 12px;
+background: linear-gradient(90deg, #0a2118 0%, #1a3d2d 100%);
+border-radius: 4px 4px 0 0;
+transform: rotateX(90deg) translateZ(-6px);
+transform-origin: bottom;
+}
+/* Card glass */
+.card-glass {
+background: rgba(255,255,255,0.7);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border: 1px solid rgba(184,151,58,0.15);
+border-radius: 16px;
+transition: all 0.3s ease;
+}
+.card-glass {
+background: rgba(255,255,255,0.9);
+border-color: rgba(184,151,58,0.35);
+transform: translateY(-4px);
+box-shadow: 0 20px 40px rgba(26,77,58,0.08);
+}
+/* Dark card */
+.card-dark {
+background: var(--escuro);
+border: 1px solid rgba(184,151,58,0.2);
+border-radius: 16px;
+transition: all 0.3s ease;
+}
+.card-dark {
+border-color: rgba(184,151,58,0.5);
+transform: translateY(-4px);
+box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+/* Section backgrounds */
+.sec-green { background: linear-gradient(160deg, #0d2b1f 0%, #1a4d3a 100%); }
+.sec-gray { background: var(--cinza); }
+/* Divider ornament */
+.ornament {
+display: flex; align-items: center; gap: 16px;
+margin: 0 auto;
+}
+.ornament::before, .ornament::after {
+content: '';
+flex: 1;
+height: 1px;
+background: linear-gradient(90deg, transparent, var(--ouro2));
+}
+.ornament::after {
+background: linear-gradient(90deg, var(--ouro2), transparent);
+}
+/* Pain icon circle */
+.icon-circle {
+width: 52px; height: 52px;
+border-radius: 50%;
+background: linear-gradient(135deg, var(--verde) 0%, var(--verde3) 100%);
+display: flex; align-items: center; justify-content: center;
+flex-shrink: 0;
+}
+/* Badge */
+.badge {
+display: inline-flex;
+align-items: center;
+gap: 6px;
+padding: 6px 14px;
+background: rgba(184,151,58,0.12);
+border: 1px solid rgba(184,151,58,0.3);
+border-radius: 50px;
+font-size: 0.78rem;
+font-weight: 600;
+color: var(--ouro2);
+letter-spacing: 0.04em;
+text-transform: uppercase;
+}
+/* Guarantee circle */
+.guarantee-circle {
+width: 180px; height: 180px;
+border-radius: 50%;
+border: 3px solid var(--ouro2);
+background: linear-gradient(135deg, #0d2b1f, #1a4d3a);
+display: flex; flex-direction: column;
+align-items: center; justify-content: center;
+box-shadow: 0 0 40px rgba(184,151,58,0.25), inset 0 0 40px rgba(184,151,58,0.05);
+}
+/* Price strike */
+.price-old {
+text-decoration: line-through;
+color: var(--cinza3);
+}
+/* FAQ */
+.faq-item { border-bottom: 1px solid var(--cinza2); }
+.faq-btn {
+width: 100%;
+text-align: left;
+padding: 20px 0;
+display: flex;
+justify-content: space-between;
+align-items: center;
+cursor: pointer;
+font-weight: 600;
+font-size: 1rem;
+color: var(--escuro);
+background: none;
+border: none;
+transition: color 0.2s;
+}
+.faq-btn { color: var(--verde); }
+.faq-body {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.4s ease, padding 0.3s ease;
+color: #6b7280;
+font-size: 0.95rem;
+line-height: 1.7;
+}
+.faq-body.open { max-height: 300px; padding-bottom: 20px; }
+/* Scroll reveal */
+.reveal {
+opacity: 0;
+transform: translateY(24px);
+transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+opacity: 1;
+transform: none;
+}
+/* Responsive */
+@media (max-width: 768px) {
+.book { width: 160px; height: 215px; }
+.guarantee-circle { width: 140px; height: 140px; }
+}
+</style>
+</head> <body>
+<!-- ═══════════════════════════════════════════════════ HERO -->
+<section class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+ <!-- Background texture -->
+ <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 25% 25%, #b8973a 0%, transparent 50%), radial-gradient(circle at 75% 75%, #40916c 0%, transparent 50%);"></div> <div class="absolute top-0 right-0 w-96 h-96 opacity-10" style="background: radial-gradient(circle, #d4af57 0%, transparent 70%);"></div>
+ <div class="max-w-6xl mx-auto px-6 py-20 md:py-28 w-full"> <div class="grid md:grid-cols-2 gap-16 items-center">
+  <!-- Left: copy -->
+  <div class="space-y-8">
+    <div class="badge">
+      <span>✦</span> Guia Prático Digital
+    </div>
+<h1 class="display text-white leading-tight" style="font-size: clamp(2.2rem, 5vw, 3.4rem);">
+      Chega de trabalhar<br>
+      muito e <span class="gold-text">sobrar pouco.</span>
+    </h1>
+<p class="text-gray-300 leading-relaxed" style="font-size: 1.1rem; max-width: 480px;">
+      Aprenda a organizar as finanças da sua empresa de forma simples, clara e definitiva — mesmo sem experiência em gestão.
+    </p>
+<a href="https://pay.kiwify.com.br/OMoZS77" target="_blank"
+       class="btn-cta inline-block px-10 py-5 text-base">
+      Quero organizar minha empresa →
+    </a>
+<!-- Selos -->
+    <div class="flex flex-wrap gap-4 pt-2">
+      <span class="flex items-center gap-2 text-gray-300 text-sm">
+        <span class="text-green-400">✔</span> Acesso imediato
+      </span>
+      <span class="flex items-center gap-2 text-gray-300 text-sm">
+        <span class="text-green-400">✔</span> Download Digital
+      </span>
+      <span class="flex items-center gap-2 text-gray-300 text-sm">
+        <span class="text-green-400">✔</span> Pagamento Seguro
+      </span>
+      <span class="flex items-center gap-2 text-gray-300 text-sm">
+        <span class="text-green-400">✔</span> Garantia de 7 dias
+      </span>
+    </div>
+  </div>
+<!-- Right: book -->
+  <div class="flex justify-center items-center">
+    <div class="book-wrap">
+      <div class="book">
+        <div class="book-cover p-7 flex flex-col justify-between h-full">
+          <!-- Cover content -->
+          <div>
+            <div class="gold-line mb-5"></div>
+            <p class="text-xs font-semibold tracking-widest uppercase mb-3" style="color: var(--ouro2);">Guia Prático</p>
+            <h2 class="display text-white font-bold leading-snug" style="font-size: 1.15rem;">Negócio<br>Organizado</h2>
+            <div class="gold-line mt-4"></div>
+          </div>
+          <div class="space-y-1">
+            <p class="text-gray-400 text-xs">O Guia Prático para</p>
+            <p class="font-semibold text-xs" style="color: var(--ouro3);">Fazer sua Empresa Prosperar</p>
+          </div>
+          <!-- Decorative icon -->
+          <div class="absolute bottom-6 right-6 opacity-20">
+            <i data-lucide="trending-up" class="text-white" style="width:48px;height:48px;"></i>
+          </div>
+        </div>
+        <div class="book-spine"></div>
+        <div class="book-top"></div>
+      </div>
+    </div>
+  </div>
+</div>
+ </div> </section>
+<!-- ═══════════════════════════════════════════════════ DORES -->
+<section class="sec-gray py-24"> <div class="max-w-5xl mx-auto px-6">
+<div class="text-center mb-16 reveal">
+  <p class="badge mx-auto mb-5" style="display:inline-flex;">Você se identifica?</p>
+  <h2 class="display font-bold text-3xl md:text-4xl" style="color: var(--escuro);">
+    Esses problemas parecem<br>familiares?
+  </h2>
+</div>
+<div class="grid md:grid-cols-2 gap-5">
+<!-- Pain items -->
+  <div class="card-glass p-6 flex gap-5 items-start reveal">
+    <div class="icon-circle"><i data-lucide="wallet" class="text-white" style="width:22px;height:22px;"></i></div>
+    <div>
+      <p class="font-semibold text-gray-800 mb-1">Você mistura dinheiro pessoal com o da empresa</p>
+      <p class="text-gray-500 text-sm">E no fim do mês não sabe de onde vem nem para onde vai.</p>
+    </div>
+  </div>
+<div class="card-glass p-6 flex gap-5 items-start reveal">
+    <div class="icon-circle"><i data-lucide="bar-chart-2" class="text-white" style="width:22px;height:22px;"></i></div>
+    <div>
+      <p class="font-semibold text-gray-800 mb-1">Não sabe exatamente quanto sua empresa lucra</p>
+      <p class="text-gray-500 text-sm">Fatura, mas o lucro real continua sendo um mistério.</p>
+    </div>
+  </div>
+<div class="card-glass p-6 flex gap-5 items-start reveal">
+    <div class="icon-circle"><i data-lucide="trending-down" class="text-white" style="width:22px;height:22px;"></i></div>
+    <div>
+      <p class="font-semibold text-gray-800 mb-1">Trabalha muito e sente que o dinheiro nunca sobra</p>
+      <p class="text-gray-500 text-sm">Horas e horas de esforço que não se refletem no bolso.</p>
+    </div>
+  </div>
+<div class="card-glass p-6 flex gap-5 items-start reveal">
+    <div class="icon-circle"><i data-lucide="tag" class="text-white" style="width:22px;height:22px;"></i></div>
+    <div>
+      <p class="font-semibold text-gray-800 mb-1">Tem dificuldade para formar o preço certo</p>
+      <p class="text-gray-500 text-sm">Cobra por intuição e pode estar perdendo margem sem saber.</p>
+    </div>
+  </div>
+<div class="card-glass p-6 flex gap-5 items-start reveal">
+    <div class="icon-circle"><i data-lucide="file-x" class="text-white" style="width:22px;height:22px;"></i></div>
+    <div>
+      <p class="font-semibold text-gray-800 mb-1">Não tem controle das despesas</p>
+      <p class="text-gray-500 text-sm">Gastos aparecem do nada e desequilibram tudo.</p>
+    </div>
+  </div>
+<div class="card-glass p-6 flex gap-5 items-start reveal">
+    <div class="icon-circle"><i data-lucide="map" class="text-white" style="width:22px;height:22px;"></i></div>
+    <div>
+      <p class="font-semibold text-gray-800 mb-1">Não consegue planejar o crescimento</p>
+      <p class="text-gray-500 text-sm">Sem organização, o futuro do negócio fica na névoa.</p>
+    </div>
+  </div>
+</div>
+<p class="text-center mt-12 text-gray-500 font-medium reveal">
+  Se você se identificou com pelo menos um desses pontos, este guia foi feito para você.
+</p>
+ </div> </section>
+<!-- ═══════════════════════════════════════════════════ APRESENTAÇÃO -->
+<section class="py-24 bg-white"> <div class="max-w-5xl mx-auto px-6"> <div class="grid md:grid-cols-2 gap-16 items-center">
+  <!-- Book again, lighter context -->
+  <div class="flex justify-center reveal">
+    <div class="book-wrap">
+      <div class="book" style="transform: rotateY(-12deg) rotateX(3deg);">
+        <div class="book-cover p-7 flex flex-col justify-between h-full">
+          <div>
+            <div class="gold-line mb-5"></div>
+            <p class="text-xs font-semibold tracking-widest uppercase mb-3" style="color: var(--ouro2);">Guia Prático</p>
+            <h2 class="display text-white font-bold leading-snug" style="font-size: 1.15rem;">Negócio<br>Organizado</h2>
+            <div class="gold-line mt-4"></div>
+          </div>
+          <div>
+            <p class="text-gray-400 text-xs">O Guia Prático para</p>
+            <p class="font-semibold text-xs" style="color: var(--ouro3);">Fazer sua Empresa Prosperar</p>
+          </div>
+        </div>
+        <div class="book-spine"></div>
+        <div class="book-top"></div>
+      </div>
+    </div>
+  </div>
+<!-- Description -->
+  <div class="space-y-6 reveal">
+    <div class="badge">Sobre o guia</div>
+    <h2 class="display font-bold text-3xl md:text-4xl" style="color: var(--escuro);">
+      Do caos financeiro<br>à <span style="color: var(--verde);">clareza total</span>
+    </h2>
+    <p class="text-gray-600 leading-relaxed">
+      O <strong>Negócio Organizado</strong> é um guia prático desenvolvido para quem quer parar de adivinhar e começar a gerir com inteligência — sem precisar de contador ou anos de faculdade.
+    </p>
+    <ul class="space-y-3">
+      <li class="flex items-center gap-3 text-gray-700">
+        <span class="text-green-600 font-bold">✔</span>
+        Linguagem simples e direta ao ponto
+      </li>
+      <li class="flex items-center gap-3 text-gray-700">
+        <span class="text-green-600 font-bold">✔</span>
+        Aplicável imediatamente no seu negócio
+      </li>
+      <li class="flex items-center gap-3 text-gray-700">
+        <span class="text-green-600 font-bold">✔</span>
+        Do zero até a gestão profissional
+      </li>
+      <li class="flex items-center gap-3 text-gray-700">
+        <span class="text-green-600 font-bold">✔</span>
+        Formato PDF — leia em qualquer dispositivo
+      </li>
+    </ul>
+  </div>
+</div>
+ </div> </section>
+<!-- ═══════════════════════════════════════════════════ O QUE APRENDERÁ -->
+<section class="sec-gray py-24"> <div class="max-w-6xl mx-auto px-6">
+<div class="text-center mb-16 reveal">
+  <p class="badge mx-auto mb-5" style="display:inline-flex;">Conteúdo do guia</p>
+  <h2 class="display font-bold text-3xl md:text-4xl" style="color: var(--escuro);">
+    O que você vai aprender
+  </h2>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+<div class="card-glass p-6 text-center reveal">
+    <div class="text-3xl mb-3">📊</div>
+    <p class="font-bold text-sm mb-1" style="color: var(--escuro);">Organização Financeira</p>
+    <p class="text-gray-500 text-xs">Estruture as contas do negócio do zero</p>
+  </div>
+<div class="card-glass p-6 text-center reveal">
+    <div class="text-3xl mb-3">💰</div>
+    <p class="font-bold text-sm mb-1" style="color: var(--escuro);">Fluxo de Caixa</p>
+    <p class="text-gray-500 text-xs">Controle entradas e saídas com precisão</p>
+  </div>
+<div class="card-glass p-6 text-center reveal">
+    <div class="text-3xl mb-3">📈</div>
+    <p class="font-bold text-sm mb-1" style="color: var(--escuro);">Precificação</p>
+    <p class="text-gray-500 text-xs">Forme preços que garantem lucro real</p>
+  </div>
+<div class="card-glass p-6 text-center reveal">
+    <div class="text-3xl mb-3">📦</div>
+    <p class="font-bold text-sm mb-1" style="color: var(--escuro);">Controle de Estoque</p>
+    <p class="text-gray-500 text-xs">Evite desperdícios e falta de produto</p>
+  </div>
+<div class="card-glass p-6 text-center reveal">
+    <div class="text-3xl mb-3">🎯</div>
+    <p class="font-bold text-sm mb-1" style="color: var(--escuro);">Metas e Resultados</p>
+    <p class="text-gray-500 text-xs">Defina e acompanhe objetivos reais</p>
+  </div>
+<div class="card-glass p-6 text-center reveal">
+    <div class="text-3xl mb-3">📉</div>
+    <p class="font-bold text-sm mb-1" style="color: var(--escuro);">Gestão de Custos</p>
+    <p class="text-gray-500 text-xs">Reduza gastos sem comprometer a qualidade</p>
+  </div>
+<div class="card-glass p-6 text-center reveal">
+    <div class="text-3xl mb-3">📋</div>
+    <p class="font-bold text-sm mb-1" style="color: var(--escuro);">Planejamento</p>
+    <p class="text-gray-500 text-xs">Construa o futuro do negócio com clareza</p>
+  </div>
+<div class="card-glass p-6 text-center reveal">
+    <div class="text-3xl mb-3">🔐</div>
+    <p class="font-bold text-sm mb-1" style="color: var(--escuro);">Separação de Contas</p>
+    <p class="text-gray-500 text-xs">Pessoa física × jurídica de forma definitiva</p>
+  </div>
+</div>
+ </div> </section>
+<!-- ═══════════════════════════════════════════════════ BENEFÍCIOS -->
+<section class="py-24 bg-white"> <div class="max-w-5xl mx-auto px-6">
+<div class="text-center mb-16 reveal">
+  <p class="badge mx-auto mb-5" style="display:inline-flex;">Transformação real</p>
+  <h2 class="display font-bold text-3xl md:text-4xl" style="color: var(--escuro);">
+    O que muda na sua vida<br>depois do guia
+  </h2>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="text-center space-y-4 reveal">
+    <div class="mx-auto w-16 h-16 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--verde), var(--verde3));">
+      <i data-lucide="shield-check" class="text-white" style="width:28px;height:28px;"></i>
+    </div>
+    <h3 class="font-bold text-lg" style="color: var(--escuro);">Mais Controle</h3>
+    <p class="text-gray-500 text-sm leading-relaxed">Você saberá exatamente o que entra, o que sai e quanto sobra — sem surpresas.</p>
+  </div>
+<div class="text-center space-y-4 reveal">
+    <div class="mx-auto w-16 h-16 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--ouro), var(--ouro2));">
+      <i data-lucide="trending-up" class="text-white" style="width:28px;height:28px;"></i>
+    </div>
+    <h3 class="font-bold text-lg" style="color: var(--escuro);">Mais Lucro</h3>
+    <p class="text-gray-500 text-sm leading-relaxed">Gestão eficiente elimina desperdícios e aumenta a margem que fica no seu bolso.</p>
+  </div>
+<div class="text-center space-y-4 reveal">
+    <div class="mx-auto w-16 h-16 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, #3b82f6, #6366f1);">
+      <i data-lucide="brain" class="text-white" style="width:28px;height:28px;"></i>
+    </div>
+    <h3 class="font-bold text-lg" style="color: var(--escuro);">Decisões Melhores</h3>
+    <p class="text-gray-500 text-sm leading-relaxed">Com dados em mãos, você decide com confiança — não mais no escuro.</p>
+  </div>
+<div class="text-center space-y-4 reveal">
+    <div class="mx-auto w-16 h-16 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, #10b981, #059669);">
+      <i data-lucide="heart" class="text-white" style="width:28px;height:28px;"></i>
+    </div>
+    <h3 class="font-bold text-lg" style="color: var(--escuro);">Mais Tranquilidade</h3>
+    <p class="text-gray-500 text-sm leading-relaxed">Dormir sem aquela tensão financeira constante. Isso não tem preço.</p>
+  </div>
+<div class="text-center space-y-4 reveal">
+    <div class="mx-auto w-16 h-16 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+      <i data-lucide="target" class="text-white" style="width:28px;height:28px;"></i>
+    </div>
+    <h3 class="font-bold text-lg" style="color: var(--escuro);">Crescimento Planejado</h3>
+    <p class="text-gray-500 text-sm leading-relaxed">Sair do improviso e construir um negócio que cresce com estrutura.</p>
+  </div>
+<div class="text-center space-y-4 reveal">
+    <div class="mx-auto w-16 h-16 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+      <i data-lucide="zap" class="text-white" style="width:28px;height:28px;"></i>
+    </div>
+    <h3 class="font-bold text-lg" style="color: var(--escuro);">Menos Desperdício</h3>
+    <p class="text-gray-500 text-sm leading-relaxed">Identificar e cortar gastos invisíveis que consomem sua margem.</p>
+  </div>
+</div>
+ </div> </section>
+<!-- ═══════════════════════════════════════════════════ PARA QUEM É -->
+<section class="sec-green py-24"> <div class="max-w-5xl mx-auto px-6">
+<div class="text-center mb-16 reveal">
+  <p class="badge mx-auto mb-5" style="display:inline-flex; background: rgba(184,151,58,0.15); border-color: rgba(184,151,58,0.4);">Para quem é</p>
+  <h2 class="display font-bold text-white text-3xl md:text-4xl">
+    Este guia é ideal para você se…
+  </h2>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-5">
+<div class="card-dark p-6 text-center reveal">
+    <div class="text-3xl mb-3">🏪</div>
+    <p class="font-bold text-white mb-1">MEI</p>
+    <p class="text-gray-400 text-sm">Microempreendedor individual</p>
+  </div>
+<div class="card-dark p-6 text-center reveal">
+    <div class="text-3xl mb-3">🏢</div>
+    <p class="font-bold text-white mb-1">Pequeno Empresário</p>
+    <p class="text-gray-400 text-sm">Com equipe ou sócio</p>
+  </div>
+<div class="card-dark p-6 text-center reveal">
+    <div class="text-3xl mb-3">🛒</div>
+    <p class="font-bold text-white mb-1">Comerciante</p>
+    <p class="text-gray-400 text-sm">Loja física ou virtual</p>
+  </div>
+<div class="card-dark p-6 text-center reveal">
+    <div class="text-3xl mb-3">🔧</div>
+    <p class="font-bold text-white mb-1">Prestador de Serviço</p>
+    <p class="text-gray-400 text-sm">Qualquer área ou nicho</p>
+  </div>
+<div class="card-dark p-6 text-center reveal">
+    <div class="text-3xl mb-3">💼</div>
+    <p class="font-bold text-white mb-1">Autônomo</p>
+    <p class="text-gray-400 text-sm">Freelancer ou profissional liberal</p>
+  </div>
+<div class="card-dark p-6 text-center reveal">
+    <div class="text-3xl mb-3">🚀</div>
+    <p class="font-bold text-white mb-1">Quem quer crescer</p>
+    <p class="text-gray-400 text-sm">Com organização e clareza</p>
+  </div>
+</div>
+ </div> </section>
+<!-- ═══════════════════════════════════════════════════ O QUE RECEBE -->
+<section class="py-24 bg-white"> <div class="max-w-4xl mx-auto px-6">
+<div class="text-center mb-16 reveal">
+  <p class="badge mx-auto mb-5" style="display:inline-flex;">Sua compra inclui</p>
+  <h2 class="display font-bold text-3xl md:text-4xl" style="color: var(--escuro);">
+    O que você recebe hoje
+  </h2>
+</div>
+<div class="card-glass p-10 reveal" style="border: 1px solid rgba(184,151,58,0.25); border-radius: 24px;">
+  <div class="grid md:grid-cols-2 gap-8 items-center">
+    <div class="space-y-5">
+      <div class="flex items-start gap-4">
+        <span class="text-2xl">📘</span>
+        <div>
+          <p class="font-bold text-gray-800">Ebook completo em PDF</p>
+          <p class="text-gray-500 text-sm">Conteúdo 100% prático e direto ao ponto</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4">
+        <span class="text-2xl">⚡</span>
+        <div>
+          <p class="font-bold text-gray-800">Acesso imediato</p>
+          <p class="text-gray-500 text-sm">Receba o link após a confirmação do pagamento</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4">
+        <span class="text-2xl">♾️</span>
+        <div>
+          <p class="font-bold text-gray-800">Acesso vitalício</p>
+          <p class="text-gray-500 text-sm">Baixe e guarde para sempre, sem prazo de expiração</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4">
+        <span class="text-2xl">📱</span>
+        <div>
+          <p class="font-bold text-gray-800">Leia em qualquer dispositivo</p>
+          <p class="text-gray-500 text-sm">Celular, tablet, computador — onde quiser</p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <div class="inline-flex flex-col items-center p-8 rounded-2xl" style="background: linear-gradient(135deg, #0d2b1f, #1a4d3a);">
+        <p class="text-gray-400 text-sm mb-1">Investimento único de</p>
+        <p class="price-old text-gray-500 text-xl font-semibold">R$ 97,00</p>
+        <div class="gold-line my-3 w-24"></div>
+        <p class="text-white text-sm font-medium mb-1">por apenas</p>
+        <p class="display font-bold text-5xl gold-text">R$ 47</p>
+        <p class="text-gray-400 text-xs mt-1">,00 — pagamento único</p>
+      </div>
+    </div>
+  </div>
+</div>
+ </div> </section>
+<!-- ═══════════════════════════════════════════════════ GARANTIA -->
+<section class="sec-gray py-24"> <div class="max-w-4xl mx-auto px-6"> <div class="grid md:grid-cols-2 gap-16 items-center">
+  <div class="flex justify-center reveal">
+    <div class="guarantee-circle">
+      <p class="display font-bold text-white text-2xl">7</p>
+      <p class="text-xs font-semibold tracking-widest uppercase mt-1" style="color: var(--ouro3);">dias de</p>
+      <p class="font-bold text-white text-sm">Garantia</p>
+      <p class="text-xs text-gray-400 mt-1">100% reembolso</p>
+    </div>
+  </div>
+<div class="space-y-5 reveal">
+    <h2 class="display font-bold text-3xl md:text-4xl" style="color: var(--escuro);">
+      Compra sem<br>nenhum risco
+    </h2>
+    <p class="text-gray-600 leading-relaxed">
+      Se dentro de <strong>7 dias</strong> você sentir que o guia não era o que esperava, basta nos enviar um e-mail e devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.
+    </p>
+    <p class="text-gray-600 leading-relaxed">
+      Essa é a nossa confiança no conteúdo — e o nosso respeito pelo seu investimento.
+    </p>
+  </div>
+</div>
+ </div> </section>
+<!-- ═══════════════════════════════════════════════════ OFERTA FINAL -->
+<section class="sec-green py-24 relative overflow-hidden">
+ <div class="absolute inset-0 opacity-10" style="background: radial-gradient(circle at 50% 50%, var(--ouro2) 0%, transparent 60%);"></div>
+ <div class="max-w-3xl mx-auto px-6 text-center relative z-10">
+<div class="reveal space-y-6">
+  <p class="badge mx-auto" style="display:inline-flex; background: rgba(184,151,58,0.15); border-color: rgba(184,151,58,0.4);">Oferta especial</p>
+<h2 class="display font-bold text-white text-3xl md:text-5xl leading-tight">
+    Transforme seu negócio<br>por <span class="gold-text">R$ 47,00</span>
+  </h2>
+<p class="text-gray-300 text-lg">
+    Menos que uma refeição. Mais que qualquer curso de gestão que você deixaria para depois.
+  </p>
+<div class="py-4">
+    <p class="price-old text-gray-400 text-xl mb-2">De R$ 97,00</p>
+    <p class="display font-bold text-white text-6xl gold-text">R$ 47,00</p>
+    <p class="text-gray-400 text-sm mt-2">pagamento único · acesso vitalício</p>
+  </div>
+<a href="https://pay.kiwify.com.br/OMoZS77" target="_blank"
+     class="btn-cta inline-block px-12 py-6 text-lg">
+    🔒 Quero meu ebook agora →
+  </a>
+<div class="flex justify-center gap-6 flex-wrap pt-2">
+    <span class="text-gray-400 text-sm flex items-center gap-2">✔ Acesso imediato</span>
+    <span class="text-gray-400 text-sm flex items-center gap-2">✔ Garantia 7 dias</span>
+    <span class="text-gray-400 text-sm flex items-center gap-2">✔ Pagamento seguro</span>
+  </div>
+</div>
+ </div> </section>
+<!-- ═══════════════════════════════════════════════════ FAQ -->
+<section class="py-24 bg-white"> <div class="max-w-3xl mx-auto px-6">
+<div class="text-center mb-16 reveal">
+  <h2 class="display font-bold text-3xl md:text-4xl" style="color: var(--escuro);">Perguntas frequentes</h2>
+</div>
+<div class="space-y-0 reveal">
+<div class="faq-item">
+    <button class="faq-btn" onclick="toggleFaq(this)">
+      <span>Como recebo o ebook após a compra?</span>
+      <i data-lucide="chevron-down" style="width:20px;height:20px;flex-shrink:0;transition:transform 0.3s;"></i>
+    </button>
+    <div class="faq-body">
+      Imediatamente após a confirmação do pagamento, você receberá um e-mail com o link para download do arquivo PDF. O processo é totalmente automático.
+    </div>
+  </div>
+<div class="faq-item">
+    <button class="faq-btn" onclick="toggleFaq(this)">
+      <span>Posso ler no celular?</span>
+      <i data-lucide="chevron-down" style="width:20px;height:20px;flex-shrink:0;transition:transform 0.3s;"></i>
+    </button>
+    <div class="faq-body">
+      Sim! O arquivo é em PDF e pode ser aberto em qualquer dispositivo — celular, tablet ou computador. Basta ter um leitor de PDF instalado (qualquer um funciona).
+    </div>
+  </div>
+<div class="faq-item">
+    <button class="faq-btn" onclick="toggleFaq(this)">
+      <span>O acesso é vitalício?</span>
+      <i data-lucide="chevron-down" style="width:20px;height:20px;flex-shrink:0;transition:transform 0.3s;"></i>
+    </button>
+    <div class="faq-body">
+      Sim. Ao fazer o download, o arquivo fica com você para sempre. Sem assinatura, sem renovação, sem expiração.
+    </div>
+  </div>
+<div class="faq-item">
+    <button class="faq-btn" onclick="toggleFaq(this)">
+      <span>Preciso ter conhecimento em gestão financeira?</span>
+      <i data-lucide="chevron-down" style="width:20px;height:20px;flex-shrink:0;transition:transform 0.3s;"></i>
+    </button>
+    <div class="faq-body">
+      Não. O guia foi escrito pensando em quem está começando do zero. A linguagem é simples, prática e acessível para qualquer pessoa.
+    </div>
+  </div>
+<div class="faq-item">
+    <button class="faq-btn" onclick="toggleFaq(this)">
+      <span>Como funciona a garantia de 7 dias?</span>
+      <i data-lucide="chevron-down" style="width:20px;height:20px;flex-shrink:0;transition:transform 0.3s;"></i>
+    </button>
+    <div class="faq-body">
+      Se por qualquer motivo você não ficar satisfeito nos primeiros 7 dias após a compra, basta nos enviar um e-mail solicitando o reembolso. Devolvemos 100% do valor, sem questionamentos.
+    </div>
+  </div>
+<div class="faq-item">
+    <button class="faq-btn" onclick="toggleFaq(this)">
+      <span>O pagamento é seguro?</span>
+      <i data-lucide="chevron-down" style="width:20px;height:20px;flex-shrink:0;transition:transform 0.3s;"></i>
+    </button>
+    <div class="faq-body">
+      Sim. O processamento é feito pela Kiwify, plataforma certificada com criptografia SSL e todos os protocolos de segurança para sua tranquilidade.
+    </div>
+  </div>
+</div>
+<!-- Final CTA -->
+<div class="text-center mt-16 reveal">
+  <a href="https://pay.kiwify.com.br/OMoZS77" target="_blank"
+     class="btn-cta inline-block px-10 py-5">
+    Quero organizar minha empresa agora →
+  </a>
+</div>
+ </div> </section>
+<!-- ═══════════════════════════════════════════════════ FOOTER -->
+<footer class="py-12" style="background: var(--escuro);"> <div class="max-w-5xl mx-auto px-6 text-center space-y-6">
+<div class="gold-line w-40 mx-auto"></div>
+<p class="display font-bold text-white text-xl">Negócio Organizado</p>
+<p class="text-gray-500 text-sm">O Guia Prático para Fazer sua Empresa Prosperar</p>
+<div class="flex justify-center gap-6 text-gray-500 text-sm flex-wrap">
+  <a href="#" class="hover:text-gray-300 transition-colors">Política de Privacidade</a>
+  <span>·</span>
+  <a href="#" class="hover:text-gray-300 transition-colors">Termos de Uso</a>
+  <span>·</span>
+  <a href="mailto:contato@negocioorganizado.com.br" class="hover:text-gray-300 transition-colors">Contato</a>
+</div>
+<div class="gold-line w-40 mx-auto"></div>
+<p class="text-gray-600 text-xs">
+  © 2025 Negócio Organizado. Todos os direitos reservados.<br>
+  Produto digital — entrega imediata via e-mail após confirmação do pagamento.
+</p>
+ </div> </footer>
+<!-- ═══════════════════════════════════════════════════ SCRIPTS -->
+<script> // Init Lucide icons lucide.createIcons(); // Scroll reveal const reveals = document.querySelectorAll('.reveal'); const observer = new IntersectionObserver((entries) => { entries.forEach((entry, i) => { if (entry.isIntersecting) { setTimeout(() => { entry.target.classList.add('visible'); }, i * 60); observer.unobserve(entry.target); } }); }, { threshold: 0.1 }); reveals.forEach(el => observer.observe(el)); // FAQ accordion function toggleFaq(btn) { const body = btn.nextElementSibling; const icon = btn.querySelector('[data-lucide="chevron-down"]'); const isOpen = body.classList.contains('open'); // Close all document.querySelectorAll('.faq-body').forEach(b => b.classList.remove('open')); document.querySelectorAll('.faq-btn [data-lucide="chevron-down"]').forEach(ic => { ic.style.transform = 'rotate(0deg)'; }); // Open clicked (if was closed) if (!isOpen) { body.classList.add('open'); icon.style.transform = 'rotate(180deg)'; } } </script>
+</body> </html>
